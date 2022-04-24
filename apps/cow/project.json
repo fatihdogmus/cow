@@ -1,0 +1,68 @@
+{
+  "root": "apps/cow",
+  "sourceRoot": "apps/cow/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/cow",
+        "main": "apps/cow/src/main.ts",
+        "tsConfig": "apps/cow/tsconfig.app.json",
+        "assets": [
+          "apps/cow/src/assets"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": false,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/cow/src/environments/environment.ts",
+              "with": "apps/cow/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "inspect": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "cow:build:development"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/cow/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/cow"
+      ],
+      "options": {
+        "jestConfig": "apps/cow/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

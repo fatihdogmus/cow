@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Reset database" type="HttpClient.HttpRequestRunConfigurationType"
+                 factoryName="HTTP Request" path="$PROJECT_DIR$/.run/resetDatabase.http" requestIdentifier="#1">
+    <method v="2"/>
+  </configuration>
+</component>

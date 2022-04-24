@@ -48,7 +48,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "cow-fe:build",
-        "hmr": true
+        "hmr": true,
+        "proxyConfig": "apps/cow-fe/proxy.conf.json"
       },
       "configurations": {
         "development": {

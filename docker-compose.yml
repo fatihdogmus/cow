@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:14.2
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/DockerVolumes/postgres:/var/lib/postgresql/data
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+    environment:
+      - POSTGRES_PASSWORD=q
+    restart: always
+  redis:
+    image: redis:6.2.6-alpine3.15
+    ports:
+      - "6379:6379"
+    restart: always
