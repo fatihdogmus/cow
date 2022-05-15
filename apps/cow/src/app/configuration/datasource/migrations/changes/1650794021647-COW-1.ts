@@ -23,5 +23,7 @@ export class COW1_1650794021647 implements MigrationInterface {
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(): Promise<void> {
+    return;
+  }
 }

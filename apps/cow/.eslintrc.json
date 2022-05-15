@@ -20,7 +20,9 @@
         "*.ts",
         "*.tsx"
       ],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "error"
+      }
     },
     {
       "files": [

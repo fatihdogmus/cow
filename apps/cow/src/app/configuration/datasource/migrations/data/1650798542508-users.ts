@@ -11,7 +11,7 @@ export class Users_1650798542508 implements MigrationInterface {
       .save(new User("admin", await hash("admin", 10), "Fatih", "Doğmuş", contactInformation));
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {
+  public async down(): Promise<void> {
     return;
   }
 }
