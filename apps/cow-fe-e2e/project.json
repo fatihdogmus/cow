@@ -1,5 +1,4 @@
 {
-  "root": "apps/cow-fe-e2e",
   "sourceRoot": "apps/cow-fe-e2e/src",
   "projectType": "application",
   "targets": {

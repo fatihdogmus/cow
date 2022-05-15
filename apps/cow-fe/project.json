@@ -1,71 +1,42 @@
 {
-  "root": "apps/cow-fe",
-  "sourceRoot": "apps/cow-fe/src",
+  "sourceRoot": "apps/cow-fe",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/web:webpack",
+      "executor": "@nrwl/next:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "compiler": "babel",
-        "outputPath": "dist/apps/cow-fe",
-        "index": "apps/cow-fe/src/index.html",
-        "baseHref": "/",
-        "main": "apps/cow-fe/src/main.tsx",
-        "polyfills": "apps/cow-fe/src/polyfills.ts",
-        "tsConfig": "apps/cow-fe/tsconfig.app.json",
-        "assets": ["apps/cow-fe/src/favicon.ico", "apps/cow-fe/src/assets"],
-        "styles": ["apps/cow-fe/src/styles.scss"],
-        "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "root": "apps/cow-fe",
+        "outputPath": "dist/apps/cow-fe"
       },
       "configurations": {
-        "development": {
-          "extractLicenses": false,
-          "optimization": false,
-          "sourceMap": true,
-          "vendorChunk": true
-        },
-        "production": {
-          "fileReplacements": [
-            {
-              "replace": "apps/cow-fe/src/environments/environment.ts",
-              "with": "apps/cow-fe/src/environments/environment.prod.ts"
-            }
-          ],
-          "optimization": true,
-          "outputHashing": "all",
-          "sourceMap": false,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false
-        }
+        "development": {},
+        "production": {}
       }
     },
     "serve": {
-      "executor": "@nrwl/web:dev-server",
+      "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "cow-fe:build",
-        "hmr": true,
-        "proxyConfig": "apps/cow-fe/proxy.conf.json"
+        "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "cow-fe:build:development"
+          "buildTarget": "cow-fe:build:development",
+          "dev": true
         },
         "production": {
           "buildTarget": "cow-fe:build:production",
-          "hmr": false
+          "dev": false
         }
       }
     },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+    "export": {
+      "executor": "@nrwl/next:export",
       "options": {
-        "lintFilePatterns": ["apps/cow-fe/**/*.{ts,tsx,js,jsx}"]
+        "buildTarget": "cow-fe:build:production"
       }
     },
     "test": {
@@ -74,6 +45,13 @@
       "options": {
         "jestConfig": "apps/cow-fe/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/cow-fe/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

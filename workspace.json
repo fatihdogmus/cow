@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "common": "libs/common",
     "cow": "apps/cow",
     "cow-fe": "apps/cow-fe",
     "cow-fe-e2e": "apps/cow-fe-e2e"
