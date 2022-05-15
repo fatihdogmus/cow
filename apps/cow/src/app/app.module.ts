@@ -25,7 +25,7 @@ export class AppModule implements NestModule {
           cookie: {
             sameSite: false,
             httpOnly: false,
-            maxAge: 60000
+            maxAge: 1000 * 24 * 60 * 60
           }
         }),
         passport.initialize(),

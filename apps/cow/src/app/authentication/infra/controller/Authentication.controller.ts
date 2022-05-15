@@ -1,19 +1,14 @@
-import { Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Controller, Post, UseGuards } from "@nestjs/common";
 import { MessageResponse } from "@cow/common";
 import { SessionLoginGuard } from "../../application/service/SessionLogin.guard";
-import { LoggedInGuard } from "../../application/service/LoggedIn.guard";
+import { Public } from "../../application/service/Public.decorator";
 
 @Controller("auth")
 export class AuthenticationController {
   @UseGuards(SessionLoginGuard)
+  @Public()
   @Post("login")
   async login() {
     return new MessageResponse("User has been logged in successfully", "INFO");
-  }
-
-  @Get("hebele")
-  @UseGuards(LoggedInGuard)
-  hebele() {
-    return "hebele";
   }
 }
