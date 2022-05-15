@@ -16,27 +16,33 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: [ 17.x ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: "Install dependencies"
-      run: yarn install
-    - name: "Lint back-end"
-      run: yarn lint
-    - name: "Test back-end"
-      run: yarn test
-    - name: "Build back-end"
-      run: yarn build
-    - name: "Lint front-end"
-      run: yarn lint:fe
-    - name: "Test front-end"
-      run: yarn test:fe
-    - name: "Build front-end"
-      run: yarn build:fe
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: cypress/cache
+          key: cypress-binary-${{ hashFiles('yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: "Lint back-end"
+        run: yarn lint
+      - name: "Test back-end"
+        run: yarn test
+      - name: "Build back-end"
+        run: yarn build
+      - name: "Lint front-end"
+        run: yarn lint:fe
+      - name: "Test front-end"
+        run: yarn test:fe
+      - name: "Build front-end"
+        run: yarn build:fe
