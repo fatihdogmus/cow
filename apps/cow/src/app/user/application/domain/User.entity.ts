@@ -1,6 +1,6 @@
 import { Column, Entity } from "typeorm";
 import { ContactInformation } from "./ContactInformation.vo";
-import { BaseEntity } from "../../../../common/entity/Base.entity";
+import { BaseEntity } from "../../../common/entity/Base.entity";
 
 @Entity("users")
 export class User extends BaseEntity {

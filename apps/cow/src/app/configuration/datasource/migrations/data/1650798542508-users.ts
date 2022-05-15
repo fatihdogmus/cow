@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
-import { User } from "../../../../authentication/infra/repository/entity/User.entity";
-import { ContactInformation } from "../../../../authentication/infra/repository/entity/ContactInformation.vo";
+import { User } from "../../../../user/application/domain/User.entity";
+import { ContactInformation } from "../../../../user/application/domain/ContactInformation.vo";
 import { hash } from "bcrypt";
 
 export class Users_1650798542508 implements MigrationInterface {

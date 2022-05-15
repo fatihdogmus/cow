@@ -1,8 +1,9 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { DatasourceModule } from "./configuration/datasource/datasource.module";
+import { AuthenticationModule } from "./authentication/authentication.module";
 
 @Module({
-  imports: [DatasourceModule]
+  imports: [DatasourceModule, AuthenticationModule]
 })
 export class AppModule implements NestModule {
   // constructor(@Inject(REDIS) private readonly redis: Client) {}
