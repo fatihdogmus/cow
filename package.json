@@ -20,6 +20,7 @@
     "@emotion/react": "^11.9.0",
     "@emotion/server": "11.4.0",
     "@emotion/styled": "^11.8.1",
+    "@hookform/resolvers": "^2.8.9",
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.7.0",
     "@nestjs/common": "8.4.5",
@@ -43,13 +44,15 @@
     "postcss": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-hook-form": "^7.31.1",
     "redis": "4.1.0",
     "reflect-metadata": "0.1.13",
     "regenerator-runtime": "0.13.9",
     "rxjs": "7.5.5",
     "tailwindcss": "latest",
     "tslib": "2.4.0",
-    "typeorm": "0.3.6"
+    "typeorm": "0.3.6",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
