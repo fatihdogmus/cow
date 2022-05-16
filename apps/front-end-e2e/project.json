@@ -1,11 +1,12 @@
 {
-  "sourceRoot": "apps/cow-fe-e2e/src",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "sourceRoot": "apps/front-end-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/cow-fe-e2e/cypress.json",
+        "cypressConfig": "apps/front-end-e2e/cypress.json",
         "devServerTarget": "front-end:serve:development"
       },
       "configurations": {
@@ -18,7 +19,9 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/cow-fe-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/front-end-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
