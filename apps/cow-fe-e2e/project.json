@@ -6,11 +6,11 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/cow-fe-e2e/cypress.json",
-        "devServerTarget": "cow-fe:serve:development"
+        "devServerTarget": "front-end:serve:development"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "cow-fe:serve:production"
+          "devServerTarget": "front-end:serve:production"
         }
       }
     },
@@ -23,5 +23,7 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["cow-fe"]
+  "implicitDependencies": [
+    "front-end"
+  ]
 }

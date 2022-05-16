@@ -5,15 +5,15 @@
   "scripts": {
     "dropdb": "typeorm schema:drop",
     "start": "nx serve cow",
-    "start:fe": "concurrently -n NX,TS -c magenta,cyan \"nx serve cow-fe\" \"yarn ts\"",
+    "start:fe": "concurrently -n NX,TS -c magenta,cyan \"nx serve front-end\" \"yarn ts\"",
     "build": "nx build cow",
-    "build:fe": "nx build cow-fe",
+    "build:fe": "nx build front-end",
     "test": "nx test cow",
-    "test:fe": "nx test cow-fe",
+    "test:fe": "nx test front-end",
     "lint": "nx lint cow",
-    "lint:fe": "nx lint cow-fe",
+    "lint:fe": "nx lint front-end",
     "typeorm": "node --require ./node_modules/ts-node/register ./node_modules/typeorm/cli.js",
-    "ts": "tsc  --noEmit --incremental --preserveWatchOutput --pretty --watch --p apps/cow-fe/tsconfig.json"
+    "ts": "tsc  --noEmit --incremental --preserveWatchOutput --pretty --watch --p apps/front-end/tsconfig.json"
   },
   "private": true,
   "dependencies": {
