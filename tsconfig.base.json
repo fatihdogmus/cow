@@ -10,12 +10,18 @@
     "importHelpers": true,
     "target": "es2022",
     "module": "es2022",
-    "lib": ["es2022", "dom"],
+    "lib": [
+      "es2022",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@cow/common": ["libs/common/src/index.ts"]
+      "@cow/common": [
+        "libs/common/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
