@@ -21,6 +21,9 @@
     "paths": {
       "@cow/common": [
         "libs/common/src/index.ts"
+      ],
+      "@cow/front-end/common-components": [
+        "libs/front-end/common-components/src/index.ts"
       ]
     }
   },

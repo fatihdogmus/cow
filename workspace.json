@@ -4,6 +4,7 @@
     "common": "libs/common",
     "cow": "apps/cow",
     "front-end": "apps/front-end",
+    "front-end-common-components": "libs/front-end/common-components",
     "front-end-e2e": "apps/front-end-e2e"
   }
 }

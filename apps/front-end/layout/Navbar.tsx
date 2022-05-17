@@ -9,7 +9,6 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
-  TextField,
   Toolbar,
   Tooltip,
   useTheme
@@ -21,10 +20,19 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PeopleIcon from "@mui/icons-material/People";
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { CForm, TextInput } from "@cow/front-end/common-components";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import * as yup from "yup";
 
 interface Props {
   onSidebarOpen: () => void;
+}
+
+interface LoginModel {
+  email: string;
+  password: string;
 }
 
 const DashboardNavbarRoot = styled(AppBar)(() => {
@@ -47,9 +55,16 @@ export const Navbar = (props: Props) => {
     return setSignInModalOpen(false);
   }
 
-  const { register, handleSubmit, formState, control } = useForm({});
+  const schema = yup.object({
+    email: yup.string().required()
+  });
 
-  function submit(values) {
+  const methods = useForm<LoginModel>({
+    mode: "onBlur",
+    resolver: yupResolver(schema)
+  });
+
+  async function submit(values) {
     console.log(values);
   }
 
@@ -128,29 +143,9 @@ export const Navbar = (props: Props) => {
               minHeight: "100%"
             }}>
             <Container maxWidth="sm">
-              <form onSubmit={handleSubmit(submit)}>
-                <TextField
-                  fullWidth
-                  label="Email Address"
-                  margin="normal"
-                  name="email"
-                  type="email"
-                  variant="outlined"
-                />
-                <TextField
-                  fullWidth
-                  label="Password"
-                  margin="normal"
-                  name="password"
-                  type="password"
-                  variant="outlined"
-                />
-                <Box sx={{ py: 2 }}>
-                  <Button color="primary" fullWidth size="large" type="submit" variant="contained">
-                    Sign In Now
-                  </Button>
-                </Box>
-              </form>
+              <CForm methods={methods} submit={submit}>
+                <TextInput id="email" name="email" label="E-Mail" type="email" />
+              </CForm>
             </Container>
           </Box>
         </DialogContent>
