@@ -12,22 +12,24 @@ export function TextInput({ id, name, label, type = "text" }: TextInputProps) {
   const { formState, control } = useFormContext();
 
   return (
-    <Controller
-      name={name}
-      control={control}
-      render={({ field }) => {
-        return (
-          <TextField
-            {...field}
-            id={id}
-            label={label}
-            fullWidth
-            error={!!formState.errors[name]}
-            helperText={formState.errors[name]?.message}
-            type={type}
-          />
-        );
-      }}
-    />
+    <div className="mb-5">
+      <Controller
+        name={name}
+        control={control}
+        render={({ field }) => {
+          return (
+            <TextField
+              {...field}
+              id={id}
+              label={label}
+              fullWidth
+              error={!!formState.errors[name]}
+              helperText={formState.errors[name]?.message}
+              type={type}
+            />
+          );
+        }}
+      />
+    </div>
   );
 }

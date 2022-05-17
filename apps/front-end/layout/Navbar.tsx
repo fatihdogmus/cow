@@ -1,18 +1,4 @@
-import {
-  AppBar,
-  Avatar,
-  Badge,
-  Box,
-  Button,
-  Container,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  Toolbar,
-  Tooltip,
-  useTheme
-} from "@mui/material";
+import { AppBar, Avatar, Badge, Box, Button, IconButton, Toolbar, Tooltip, useTheme } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -20,20 +6,28 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PeopleIcon from "@mui/icons-material/People";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { CForm, TextInput } from "@cow/front-end/common-components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as yup from "yup";
+import axios from "axios";
+import { MessageResponse } from "@cow/common";
+import LoginModal from "./LoginModal";
+import { toast } from "react-toastify";
 
 interface Props {
   onSidebarOpen: () => void;
 }
 
-interface LoginModel {
-  email: string;
+export interface LoginModel {
+  username: string;
   password: string;
 }
+
+const defaultValues: LoginModel = {
+  username: "",
+  password: ""
+};
 
 const DashboardNavbarRoot = styled(AppBar)(() => {
   const theme = useTheme();
@@ -42,6 +36,7 @@ const DashboardNavbarRoot = styled(AppBar)(() => {
     boxShadow: theme.shadows[3]
   };
 });
+
 export const Navbar = (props: Props) => {
   const { onSidebarOpen, ...other } = props;
 
@@ -52,20 +47,27 @@ export const Navbar = (props: Props) => {
   }
 
   function closeSignInModal() {
+    methods.reset();
     return setSignInModalOpen(false);
   }
 
   const schema = yup.object({
-    email: yup.string().required()
+    username: yup.string().required(),
+    password: yup.string().required()
   });
 
   const methods = useForm<LoginModel>({
-    mode: "onBlur",
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
+    defaultValues
   });
 
-  async function submit(values) {
-    console.log(values);
+  async function submit(values: LoginModel) {
+    const messageResponse = (await axios.post<MessageResponse>("/api/auth/login", values)).data;
+    if (messageResponse.resultType === "INFO") {
+      closeSignInModal();
+      toast.success(messageResponse.message);
+    }
+    console.log(messageResponse);
   }
 
   return (
@@ -125,31 +127,17 @@ export const Navbar = (props: Props) => {
               height: 40,
               width: 40,
               ml: 1
-            }}
-            src="/static/images/avatars/avatar_1.png">
+            }}>
             <AccountCircleIcon fontSize="small" />
           </Avatar>
         </Toolbar>
       </DashboardNavbarRoot>
-      <Dialog open={isSignInModalOpen} onClose={closeSignInModal}>
-        <DialogTitle>Sign-in</DialogTitle>
-        <DialogContent>
-          <Box
-            component="main"
-            sx={{
-              alignItems: "center",
-              display: "flex",
-              flexGrow: 1,
-              minHeight: "100%"
-            }}>
-            <Container maxWidth="sm">
-              <CForm methods={methods} submit={submit}>
-                <TextInput id="email" name="email" label="E-Mail" type="email" />
-              </CForm>
-            </Container>
-          </Box>
-        </DialogContent>
-      </Dialog>
+      <LoginModal
+        isSignInModalOpen={isSignInModalOpen}
+        closeSignInModal={closeSignInModal}
+        methods={methods}
+        submit={submit}
+      />
     </>
   );
 };

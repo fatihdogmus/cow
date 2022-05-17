@@ -4,5 +4,6 @@
   "arrowParens": "avoid",
   "bracketSameLine": true,
   "endOfLine": "crlf",
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "htmlWhitespaceSensitivity": "css"
 }

@@ -5254,7 +5254,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:0.27.2":
+"axios@npm:0.27.2, axios@npm:^0.27.2":
   version: 0.27.2
   resolution: "axios@npm:0.27.2"
   dependencies:
@@ -6488,6 +6488,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ~5.23.0
     "@typescript-eslint/parser": ~5.23.0
     autoprefixer: latest
+    axios: ^0.27.2
     babel-jest: 27.5.1
     bcrypt: 5.0.1
     class-transformer: 0.5.1
@@ -6517,6 +6518,7 @@ __metadata:
     react-dom: 18.1.0
     react-hook-form: ^7.31.1
     react-test-renderer: 18.1.0
+    react-toastify: ^9.0.1
     redis: 4.1.0
     reflect-metadata: 0.1.13
     regenerator-runtime: 0.13.9
@@ -12989,6 +12991,18 @@ __metadata:
   peerDependencies:
     react: ^18.1.0
   checksum: 401a0020ff39ebdb37e015197ab11ceb13ddb7004716b7fb6304b169f20d6b0c4d0e14aaa0da139ce2b1eb14088cf370b5771b30fee52f16d6b682b5332c5781
+  languageName: node
+  linkType: hard
+
+"react-toastify@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "react-toastify@npm:9.0.1"
+  dependencies:
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 920603bfd18d26537ad7fcd31899eea1469922176a730a8e597c199447af79cb8dba3bd30e9327aa3f841790737d564880f76c83b60ec34c4b1c5c32e2a79b06
   languageName: node
   linkType: hard
 

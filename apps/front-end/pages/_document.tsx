@@ -7,6 +7,7 @@ class _document extends Document {
       <Html>
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Inter&display=optional" rel="stylesheet" />
+          <link rel="icon" type="image/x-icon" href="/ceng-logo.png" />
         </Head>
         <body>
           <Main />
