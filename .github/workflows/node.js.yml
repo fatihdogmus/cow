@@ -27,6 +27,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: "yarn"
       - name: Cache Cypress Binary
         id: cache-cypress-binary
         uses: actions/cache@v2
