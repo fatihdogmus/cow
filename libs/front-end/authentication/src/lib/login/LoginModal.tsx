@@ -21,7 +21,7 @@ const defaultValues: LoginModel = {
   password: ""
 };
 
-function LoginModal({ isSignInModalOpen, closeSignInModal, submit }: Props) {
+export function LoginModal({ isSignInModalOpen, closeSignInModal, submit }: Props) {
   const schema = yup.object({
     username: yup.string().required(),
     password: yup.string().required()
@@ -43,7 +43,7 @@ function LoginModal({ isSignInModalOpen, closeSignInModal, submit }: Props) {
             flexGrow: 1,
             minHeight: "100%"
           }}>
-          <CForm header="" methods={methods} submit={submit}>
+          <CForm header="" methods={methods} submit={submit} cancel={closeSignInModal}>
             <TextInput id="username" name="username" label="Username" />
             <TextInput id="password" name="password" label="Password" type="password" />
           </CForm>
@@ -52,5 +52,3 @@ function LoginModal({ isSignInModalOpen, closeSignInModal, submit }: Props) {
     </Dialog>
   );
 }
-
-export default LoginModal;

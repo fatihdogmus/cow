@@ -1,16 +1,13 @@
 import { AppBar, Avatar, Badge, Box, Button, IconButton, Toolbar, Tooltip, useTheme } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import PeopleIcon from "@mui/icons-material/People";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { DispatchType, UserActions } from "@cow/front-end/store";
-import { AuthenticationService, LoginModel } from "@cow/front-end/authentication";
-import LoginModal from "../../../libs/front-end/authentication/src/lib/login/LoginModal";
+import { AuthenticationService, LoginModal, LoginModel } from "@cow/front-end/authentication";
 
 const DashboardNavbarRoot = styled(AppBar)(() => {
   const theme = useTheme();
@@ -66,17 +63,17 @@ export const Navbar = (props: { onSidebarOpen: () => void }) => {
             }}>
             <MenuIcon fontSize="small" />
           </IconButton>
-          <Tooltip title="Search">
-            <IconButton sx={{ ml: 1 }}>
-              <SearchIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
+          {/*<Tooltip title="Search">*/}
+          {/*  <IconButton sx={{ ml: 1 }}>*/}
+          {/*    <SearchIcon fontSize="small" />*/}
+          {/*  </IconButton>*/}
+          {/*</Tooltip>*/}
           <Box sx={{ flexGrow: 1 }} />
-          <Tooltip title="Contacts">
-            <IconButton sx={{ ml: 1 }}>
-              <PeopleIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
+          {/*<Tooltip title="Contacts">*/}
+          {/*  <IconButton sx={{ ml: 1 }}>*/}
+          {/*    <PeopleIcon fontSize="small" />*/}
+          {/*  </IconButton>*/}
+          {/*</Tooltip>*/}
           <Tooltip title="Notifications">
             <IconButton sx={{ ml: 1 }}>
               <Badge badgeContent={4} color="primary" variant="dot">
@@ -85,13 +82,11 @@ export const Navbar = (props: { onSidebarOpen: () => void }) => {
             </IconButton>
           </Tooltip>
           <Tooltip title="Sign-in">
-            <Button
-              onClick={function () {
-                setSignInModalOpen(true);
-              }}
-              variant="contained">
-              Sign-in
-            </Button>
+            <div className="ml-2 mr-2">
+              <Button onClick={() => setSignInModalOpen(true)} variant="contained">
+                Sign-in
+              </Button>
+            </div>
           </Tooltip>
           <Avatar
             sx={{
@@ -106,9 +101,7 @@ export const Navbar = (props: { onSidebarOpen: () => void }) => {
       {isSignInModalOpen ? (
         <LoginModal
           isSignInModalOpen={isSignInModalOpen}
-          closeSignInModal={function () {
-            return setSignInModalOpen(false);
-          }}
+          closeSignInModal={() => setSignInModalOpen(false)}
           submit={submit}
         />
       ) : null}
