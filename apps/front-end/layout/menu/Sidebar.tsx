@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { Box, Divider, Drawer, Theme, useMediaQuery } from "@mui/material";
-import { Logo } from "./logo";
 import { NavItem } from "./nav-item";
 import { menuItems } from "./MenuItems";
+import logo from "../../public/ceng-logo.png";
+import Image from "next/image";
 
 interface Props {
   onClose: () => void;
@@ -45,13 +46,7 @@ export const Sidebar = (props: Props) => {
           <Box sx={{ p: 3 }}>
             <NextLink href="/" passHref>
               <a>
-                <Logo
-                  variant={"light"}
-                  sx={{
-                    height: 42,
-                    width: 42
-                  }}
-                />
+                <Image src={logo} width={42} height={42} alt="logo" />
               </a>
             </NextLink>
           </Box>

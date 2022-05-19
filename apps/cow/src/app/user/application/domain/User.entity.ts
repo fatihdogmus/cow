@@ -1,6 +1,7 @@
 import { Column, Entity } from "typeorm";
 import { ContactInformation } from "./ContactInformation.vo";
 import { BaseEntity } from "../../../common/entity/Base.entity";
+import { Role } from "@cow/common";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -16,6 +17,13 @@ export class User extends BaseEntity {
   @Column()
   surname: string;
 
+  @Column({
+    type: "enum",
+    enum: Role,
+    default: "ANONYMOUS"
+  })
+  role: Role;
+
   @Column(() => ContactInformation, { prefix: false })
   contactInformation: ContactInformation;
 
@@ -24,6 +32,7 @@ export class User extends BaseEntity {
     password: string,
     name: string,
     surname: string,
+    role: Role,
     contactInformation: ContactInformation
   ) {
     super();
@@ -31,6 +40,7 @@ export class User extends BaseEntity {
     this.password = password;
     this.name = name;
     this.surname = surname;
+    this.role = role;
     this.contactInformation = contactInformation;
   }
 }

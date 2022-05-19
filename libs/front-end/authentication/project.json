@@ -1,6 +1,6 @@
 {
   "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
-  "sourceRoot": "libs/front-end/common-components/src",
+  "sourceRoot": "libs/front-end/authentication/src",
   "projectType": "library",
   "targets": {
     "lint": {
@@ -10,22 +10,22 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/front-end/common-components/**/*.{ts,tsx,js,jsx}"
+          "libs/front-end/authentication/**/*.{ts,tsx,js,jsx}"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "coverage/libs/front-end/common-components"
+        "coverage/libs/front-end/authentication"
       ],
       "options": {
-        "jestConfig": "libs/front-end/common-components/jest.config.ts",
+        "jestConfig": "libs/front-end/authentication/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
   "tags": [
-    "front-end:common-components"
+    "front-end:authentication"
   ]
 }

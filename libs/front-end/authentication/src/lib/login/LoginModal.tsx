@@ -1,17 +1,36 @@
 import React from "react";
-import { UseFormReturn } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Box, Dialog, DialogContent, DialogTitle } from "@mui/material";
 import { CForm, TextInput } from "@cow/front-end/common-components";
-import { LoginModel } from "./Navbar";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface Props {
   isSignInModalOpen: boolean;
   closeSignInModal: () => void;
-  methods: UseFormReturn<LoginModel>;
   submit: (values: LoginModel) => Promise<void>;
 }
 
-function LoginModal({ isSignInModalOpen, closeSignInModal, methods, submit }: Props) {
+export interface LoginModel {
+  username: string;
+  password: string;
+}
+
+const defaultValues: LoginModel = {
+  username: "",
+  password: ""
+};
+
+function LoginModal({ isSignInModalOpen, closeSignInModal, submit }: Props) {
+  const schema = yup.object({
+    username: yup.string().required(),
+    password: yup.string().required()
+  });
+
+  const methods = useForm<LoginModel>({
+    resolver: yupResolver(schema),
+    defaultValues
+  });
   return (
     <Dialog sx={{ minWidth: "400px" }} open={isSignInModalOpen} onClose={closeSignInModal}>
       <DialogTitle sx={{ minWidth: "150px" }}>Log in</DialogTitle>

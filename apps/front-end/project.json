@@ -64,5 +64,7 @@
       }
     }
   },
-  "tags": []
+  "tags": [
+    "front-end"
+  ]
 }

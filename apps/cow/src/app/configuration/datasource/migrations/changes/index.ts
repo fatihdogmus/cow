@@ -1,3 +1,4 @@
 import { COW1_1650794021647 } from "./1650794021647-COW-1";
+import { COW7_1652889129455 } from "./1652889129455-COW-7";
 
-export const changes = [COW1_1650794021647];
+export const changes = [COW1_1650794021647, COW7_1652889129455];

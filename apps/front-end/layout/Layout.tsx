@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Navbar } from "./Navbar";
-import { Sidebar } from "./Sidebar";
+import { Sidebar } from "./menu/Sidebar";
 
 const Content = styled("div")(({ theme }) => ({
   display: "flex",

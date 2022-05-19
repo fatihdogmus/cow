@@ -22,8 +22,14 @@
       "@cow/common": [
         "libs/common/src/index.ts"
       ],
+      "@cow/front-end/authentication": [
+        "libs/front-end/authentication/src/index.ts"
+      ],
       "@cow/front-end/common-components": [
         "libs/front-end/common-components/src/index.ts"
+      ],
+      "@cow/front-end/store": [
+        "libs/front-end/store/src/index.ts"
       ]
     }
   },

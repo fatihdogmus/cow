@@ -1,6 +1,6 @@
 {
   "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
-  "sourceRoot": "libs/front-end/common-components/src",
+  "sourceRoot": "libs/front-end/store/src",
   "projectType": "library",
   "targets": {
     "lint": {
@@ -10,22 +10,22 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/front-end/common-components/**/*.{ts,tsx,js,jsx}"
+          "libs/front-end/store/**/*.{ts,tsx,js,jsx}"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "coverage/libs/front-end/common-components"
+        "coverage/libs/front-end/store"
       ],
       "options": {
-        "jestConfig": "libs/front-end/common-components/jest.config.ts",
+        "jestConfig": "libs/front-end/store/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
   "tags": [
-    "front-end:common-components"
+    "front-end:store"
   ]
 }

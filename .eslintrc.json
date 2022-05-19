@@ -13,9 +13,33 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
+                "sourceTag": "cow",
                 "onlyDependOnLibsWithTags": [
-                  "*"
+                  "common"
+                ]
+              },
+              {
+                "sourceTag": "front-end",
+                "onlyDependOnLibsWithTags": [
+                  "common",
+                  "front-end:common-components",
+                  "front-end:store",
+                  "front-end:authentication"
+                ]
+              },
+              //front-end libraries
+              {
+                "sourceTag": "front-end:store",
+                "onlyDependOnLibsWithTags": [
+                  "common"
+                ]
+              },
+              {
+                "sourceTag": "front-end:authentication",
+                "onlyDependOnLibsWithTags": [
+                  "common",
+                  "front-end:common-components",
+                  "front-end:store"
                 ]
               }
             ]

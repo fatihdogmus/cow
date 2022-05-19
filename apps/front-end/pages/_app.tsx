@@ -8,7 +8,12 @@ import { theme } from "../theme";
 import { Layout } from "../layout/Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { Provider } from "react-redux";
+import { store } from "@cow/front-end/store";
+import InitialLoadComponent from "../configuration/InitialLoadComponent";
 
+axios.defaults.baseURL = "/api/";
 const clientSideEmotionCache = createEmotionCache();
 
 function CustomApp({ Component, pageProps }: AppProps) {
@@ -20,9 +25,13 @@ function CustomApp({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Provider store={store}>
+          <Layout>
+            <Component {...pageProps} />
+            <InitialLoadComponent />
+          </Layout>
+        </Provider>
+
         <ToastContainer theme="colored" pauseOnFocusLoss={false} draggable={false} />
       </ThemeProvider>
     </CacheProvider>

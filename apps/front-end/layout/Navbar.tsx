@@ -6,28 +6,11 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PeopleIcon from "@mui/icons-material/People";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-
-import * as yup from "yup";
-import axios from "axios";
-import { MessageResponse } from "@cow/common";
-import LoginModal from "./LoginModal";
 import { toast } from "react-toastify";
-
-interface Props {
-  onSidebarOpen: () => void;
-}
-
-export interface LoginModel {
-  username: string;
-  password: string;
-}
-
-const defaultValues: LoginModel = {
-  username: "",
-  password: ""
-};
+import { useDispatch } from "react-redux";
+import { DispatchType, UserActions } from "@cow/front-end/store";
+import { AuthenticationService, LoginModel } from "@cow/front-end/authentication";
+import LoginModal from "../../../libs/front-end/authentication/src/lib/login/LoginModal";
 
 const DashboardNavbarRoot = styled(AppBar)(() => {
   const theme = useTheme();
@@ -37,37 +20,21 @@ const DashboardNavbarRoot = styled(AppBar)(() => {
   };
 });
 
-export const Navbar = (props: Props) => {
+export const Navbar = (props: { onSidebarOpen: () => void }) => {
   const { onSidebarOpen, ...other } = props;
-
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
+  const dispatch = useDispatch<DispatchType>();
 
-  function openSignInModal() {
-    setSignInModalOpen(true);
-  }
-
-  function closeSignInModal() {
-    methods.reset();
-    return setSignInModalOpen(false);
-  }
-
-  const schema = yup.object({
-    username: yup.string().required(),
-    password: yup.string().required()
-  });
-
-  const methods = useForm<LoginModel>({
-    resolver: yupResolver(schema),
-    defaultValues
-  });
+  const authenticationService = new AuthenticationService();
 
   async function submit(values: LoginModel) {
-    const messageResponse = (await axios.post<MessageResponse>("/api/auth/login", values)).data;
+    const messageResponse = await authenticationService.login(values.username, values.password);
     if (messageResponse.resultType === "INFO") {
-      closeSignInModal();
+      setSignInModalOpen(false);
       toast.success(messageResponse.message);
     }
-    console.log(messageResponse);
+    const loggedInUser = await authenticationService.getLoggedInUser();
+    dispatch(UserActions.login(loggedInUser));
   }
 
   return (
@@ -118,7 +85,11 @@ export const Navbar = (props: Props) => {
             </IconButton>
           </Tooltip>
           <Tooltip title="Sign-in">
-            <Button onClick={openSignInModal} variant="contained">
+            <Button
+              onClick={function () {
+                setSignInModalOpen(true);
+              }}
+              variant="contained">
               Sign-in
             </Button>
           </Tooltip>
@@ -132,12 +103,15 @@ export const Navbar = (props: Props) => {
           </Avatar>
         </Toolbar>
       </DashboardNavbarRoot>
-      <LoginModal
-        isSignInModalOpen={isSignInModalOpen}
-        closeSignInModal={closeSignInModal}
-        methods={methods}
-        submit={submit}
-      />
+      {isSignInModalOpen ? (
+        <LoginModal
+          isSignInModalOpen={isSignInModalOpen}
+          closeSignInModal={function () {
+            return setSignInModalOpen(false);
+          }}
+          submit={submit}
+        />
+      ) : null}
     </>
   );
 };
