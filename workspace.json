@@ -3,6 +3,7 @@
   "projects": {
     "common": "libs/common",
     "cow": "apps/cow",
+    "cow-common": "libs/cow/common",
     "front-end": "apps/front-end",
     "front-end-authentication": "libs/front-end/authentication",
     "front-end-common-components": "libs/front-end/common-components",

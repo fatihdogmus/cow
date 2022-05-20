@@ -2,7 +2,7 @@ import { MigrationInterface, QueryRunner } from "typeorm";
 import { User } from "../../../../user/application/domain/User.entity";
 import { ContactInformation } from "../../../../user/application/domain/ContactInformation.vo";
 import { hash } from "bcrypt";
-import { Role } from "@cow/common";
+import { Role } from "@common";
 
 export class Users_9000000000000 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

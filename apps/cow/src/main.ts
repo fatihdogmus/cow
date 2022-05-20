@@ -10,6 +10,7 @@ import { AppModule } from "./app/app.module";
 
 import "reflect-metadata";
 import { LoggedInGuard } from "./app/authentication/application/service/LoggedIn.guard";
+import { RolesGuard } from "@cow/common";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,7 +20,8 @@ async function bootstrap() {
       whitelist: true
     })
   );
-  app.useGlobalGuards(new LoggedInGuard(app.get(Reflector)));
+  const reflector = app.get(Reflector);
+  app.useGlobalGuards(new LoggedInGuard(reflector), new RolesGuard(reflector));
   const port = process.env.PORT || 3333;
   await app.listen(port);
 }

@@ -19,8 +19,11 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@cow/common": [
+      "@common": [
         "libs/common/src/index.ts"
+      ],
+      "@cow/common": [
+        "libs/cow/common/src/index.ts"
       ],
       "@cow/front-end/authentication": [
         "libs/front-end/authentication/src/index.ts"

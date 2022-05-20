@@ -1,7 +1,7 @@
 import { Column, Entity } from "typeorm";
 import { ContactInformation } from "./ContactInformation.vo";
 import { BaseEntity } from "../../../common/entity/Base.entity";
-import { Role } from "@cow/common";
+import { Role } from "@common";
 
 @Entity("users")
 export class User extends BaseEntity {
