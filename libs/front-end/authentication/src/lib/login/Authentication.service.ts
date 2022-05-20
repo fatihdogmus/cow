@@ -1,6 +1,6 @@
-import { MessageResponse } from "@cow/common";
 import axios from "axios";
 import { User } from "@cow/front-end/store";
+import { MessageResponse } from "@common";
 
 export class AuthenticationService {
   async login(username: string, password: string): Promise<MessageResponse> {

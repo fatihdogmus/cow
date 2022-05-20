@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Role } from "@cow/common";
+import { Role } from "@common";
 
 export interface User {
   id: number;

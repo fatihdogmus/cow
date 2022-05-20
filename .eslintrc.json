@@ -15,7 +15,8 @@
               {
                 "sourceTag": "cow",
                 "onlyDependOnLibsWithTags": [
-                  "common"
+                  "common",
+                  "cow:common"
                 ]
               },
               {
@@ -24,7 +25,8 @@
                   "common",
                   "front-end:common-components",
                   "front-end:store",
-                  "front-end:authentication"
+                  "front-end:authentication",
+                  "front-end:users"
                 ]
               },
               //front-end libraries
@@ -36,6 +38,14 @@
               },
               {
                 "sourceTag": "front-end:authentication",
+                "onlyDependOnLibsWithTags": [
+                  "common",
+                  "front-end:common-components",
+                  "front-end:store"
+                ]
+              },
+              {
+                "sourceTag": "front-end:users",
                 "onlyDependOnLibsWithTags": [
                   "common",
                   "front-end:common-components",

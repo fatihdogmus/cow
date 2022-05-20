@@ -8,6 +8,7 @@
     "front-end-authentication": "libs/front-end/authentication",
     "front-end-common-components": "libs/front-end/common-components",
     "front-end-e2e": "apps/front-end-e2e",
-    "front-end-store": "libs/front-end/store"
+    "front-end-store": "libs/front-end/store",
+    "front-end-users": "libs/front-end/users"
   }
 }

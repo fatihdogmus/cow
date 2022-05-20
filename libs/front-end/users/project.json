@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/cow/common/src",
+  "$schema": "..\\..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "sourceRoot": "libs/front-end/users/src",
   "projectType": "library",
   "targets": {
     "lint": {
@@ -10,22 +10,22 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/cow/common/**/*.ts"
+          "libs/front-end/users/**/*.{ts,tsx,js,jsx}"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "coverage/libs/cow/common"
+        "coverage/libs/front-end/users"
       ],
       "options": {
-        "jestConfig": "libs/cow/common/jest.config.ts",
+        "jestConfig": "libs/front-end/users/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
   "tags": [
-    "cow:common"
+    "front-end:users"
   ]
 }

@@ -33,6 +33,9 @@
       ],
       "@cow/front-end/store": [
         "libs/front-end/store/src/index.ts"
+      ],
+      "@cow/front-end/users": [
+        "libs/front-end/users/src/index.ts"
       ]
     }
   },
