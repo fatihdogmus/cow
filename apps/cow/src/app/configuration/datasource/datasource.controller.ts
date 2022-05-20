@@ -1,6 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
 import { Connection } from "typeorm";
-import { Public } from "../../authentication/application/service/Public.decorator";
+import { Public } from "@cow/common";
 
 @Controller("dev")
 export class DatasourceController {

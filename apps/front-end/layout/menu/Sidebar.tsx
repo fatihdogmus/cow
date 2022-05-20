@@ -6,6 +6,9 @@ import { NavItem } from "./nav-item";
 import { menuItems } from "./MenuItems";
 import logo from "../../public/ceng-logo.png";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { ApplicationState } from "@cow/front-end/store";
+import { Role } from "@common";
 
 interface Props {
   onClose: () => void;
@@ -20,19 +23,17 @@ export const Sidebar = (props: Props) => {
     noSsr: false
   });
 
-  useEffect(
-    () => {
-      if (!router.isReady) {
-        return;
-      }
+  const userRole = useSelector<ApplicationState, Role>(state => state.user.role);
 
-      if (open) {
-        onClose?.();
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.asPath]
-  );
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    if (open) {
+      onClose?.();
+    }
+  }, [router.asPath]);
 
   const content = (
     <>
@@ -58,9 +59,11 @@ export const Sidebar = (props: Props) => {
           }}
         />
         <Box sx={{ flexGrow: 1 }}>
-          {menuItems.map(item => (
-            <NavItem key={item.title} icon={item.icon} href={item.href} title={item.title} />
-          ))}
+          {menuItems
+            .filter(item => item.roles.includes(userRole) || item.roles.length === 0)
+            .map(item => (
+              <NavItem key={item.title} icon={item.icon} href={item.href} title={item.title} />
+            ))}
         </Box>
         <Divider sx={{ borderColor: "#2D3748" }} />
       </Box>

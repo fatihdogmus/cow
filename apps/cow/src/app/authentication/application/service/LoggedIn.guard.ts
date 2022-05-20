@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { IS_PUBLIC_KEY } from "./Public.decorator";
+import { IS_PUBLIC_KEY } from "@cow/common";
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {

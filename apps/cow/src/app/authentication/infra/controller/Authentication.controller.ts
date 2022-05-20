@@ -1,11 +1,10 @@
 import { Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
 import { SessionLoginGuard } from "../../application/service/SessionLogin.guard";
-import { Public } from "../../application/service/Public.decorator";
+import { Public } from "@cow/common";
 import { Request } from "express";
 import { LoggedInUser } from "../../application/service/Session.serializer";
 import { UserQueryService } from "../../../user/application/service/UserQuery.service";
-import { MessageResponse, Role } from "@common";
-import { HasAnyAuthority } from "@cow/common";
+import { MessageResponse } from "@common";
 
 @Controller("auth")
 export class AuthenticationController {
@@ -32,11 +31,5 @@ export class AuthenticationController {
       };
     }
     return null;
-  }
-
-  @Get("hebele")
-  @HasAnyAuthority(Role.ADMIN)
-  hebele() {
-    return "hebele";
   }
 }
