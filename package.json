@@ -12,6 +12,7 @@
     "test:fe": "nx test front-end",
     "lint": "nx lint cow",
     "lint:fe": "nx lint front-end",
+    "analyze": "cross-env ANALYZE=true nx build front-end",
     "typeorm:change": "typeorm migration:create apps/cow/src/app/configuration/datasource/migrations/changes/$npm_config_name",
     "ts": "tsc  --noEmit --incremental --preserveWatchOutput --pretty --watch --p apps/front-end/tsconfig.json"
   },
@@ -92,6 +93,7 @@
     "@typescript-eslint/parser": "~5.23.0",
     "babel-jest": "27.5.1",
     "babel-plugin-import": "^1.13.5",
+    "cross-env": "^7.0.3",
     "cypress": "9.6.1",
     "eslint": "~8.15.0",
     "eslint-config-next": "12.1.6",

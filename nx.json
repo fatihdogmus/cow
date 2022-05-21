@@ -27,6 +27,18 @@
         "target": "build",
         "projects": "dependencies"
       }
+    ],
+    "lint": [
+      {
+        "target": "lint",
+        "projects": "dependencies"
+      }
+    ],
+    "test": [
+      {
+        "target": "test",
+        "projects": "dependencies"
+      }
     ]
   },
   "generators": {
