@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "react-toastify/dist/ReactToastify.css";
+@import "react-perfect-scrollbar/dist/css/styles.css";
+
 /* For whitespace on the sides varying with width */
 .padding-alignment {
   @apply sm:px-24 px-2;

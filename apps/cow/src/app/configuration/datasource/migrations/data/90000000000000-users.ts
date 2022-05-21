@@ -9,7 +9,10 @@ export class Users_9000000000000 implements MigrationInterface {
     const contactInformation = new ContactInformation("fdogmus06@gmail.com", undefined, undefined, undefined);
     await queryRunner.manager
       .getRepository(User)
-      .save(new User("admin", await hash("admin", 10), "Fatih", "Doğmuş", Role.ADMIN, contactInformation));
+      .save([
+        new User("admin", await hash("admin", 10), "Fatih", "Doğmuş", Role.ADMIN, contactInformation),
+        new User("enis.erkaya", await hash("ta", 10), "Enis", "Erkaya", Role.TEACHING_ASSISTANT, contactInformation)
+      ]);
   }
 
   public async down(): Promise<void> {

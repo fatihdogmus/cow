@@ -1,7 +1,7 @@
-import { ListUsers } from "@cow/front-end/users";
+import { ListUsers, ListUsersApi } from "@cow/front-end/users";
 
 function Index() {
-  return <ListUsers></ListUsers>;
+  return <ListUsers listUsersApi={new ListUsersApi()}></ListUsers>;
 }
 
 export default Index;

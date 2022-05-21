@@ -1,7 +1,7 @@
 import PeopleIcon from "@mui/icons-material/People";
 import React from "react";
 import { Role } from "@common";
-import { Home } from "@mui/icons-material";
+import Home from "@mui/icons-material/Home";
 
 export interface MenuItem {
   href: string;

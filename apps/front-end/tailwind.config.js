@@ -2,7 +2,6 @@ const { createGlobPatternsForDependencies } = require("@nrwl/react/tailwind");
 const { join } = require("path");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
-// THIS OBJECT SHOULD BE SIMILAR TO ./helpers/theme.js
 const themeConstants = {
   paper: "#F9F9F9",
   primary: {

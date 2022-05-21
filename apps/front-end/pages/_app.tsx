@@ -8,6 +8,7 @@ import { theme } from "../theme";
 import { Layout } from "../layout/Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "react-perfect-scrollbar/dist/css/styles.css";
 import axios from "axios";
 import { Provider } from "react-redux";
 import { store } from "@cow/front-end/store";

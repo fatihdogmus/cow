@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Role } from "@common";
 
-export interface User {
+export interface LoggedInUser {
   id: number;
   name: string;
   surname: string;
@@ -9,7 +9,7 @@ export interface User {
   role: Role;
 }
 
-export const initialUserState: User = {
+export const initialUserState: LoggedInUser = {
   id: 0,
   name: "",
   surname: "",
@@ -21,7 +21,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: initialUserState,
   reducers: {
-    login(state, { payload }: PayloadAction<User>) {
+    login(state, { payload }: PayloadAction<LoggedInUser>) {
       setUser(state, payload);
     },
     logout(state) {
@@ -30,7 +30,7 @@ const userSlice = createSlice({
   }
 });
 
-function setUser(state: User, user: User) {
+function setUser(state: LoggedInUser, user: LoggedInUser) {
   state.id = user.id;
   state.name = user.name;
   state.surname = user.surname;
@@ -40,4 +40,3 @@ function setUser(state: User, user: User) {
 
 export const UserReducers = userSlice.reducer;
 export const UserActions = userSlice.actions;
-export const UserSliceName = userSlice.name;

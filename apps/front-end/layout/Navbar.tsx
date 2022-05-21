@@ -1,4 +1,6 @@
-import { AppBar, Avatar, Badge, Box, Button, IconButton, Toolbar, Tooltip, useTheme } from "@mui/material";
+import { AppBar, Avatar, Badge, Box, Button, IconButton, Toolbar, Tooltip } from "@mui/material/";
+
+import { useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -13,7 +15,7 @@ const DashboardNavbarRoot = styled(AppBar)(() => {
   const theme = useTheme();
   return {
     backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[3]
+    boxShadow: "0px 3px 6px rgba(100, 116, 139, 0.12)"
   };
 });
 
